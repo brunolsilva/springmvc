@@ -11,6 +11,7 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -72,5 +73,13 @@ public class ProductsController {
 	@ResponseBody
 	public List<Product> listJson() {
 		return productDAO.list();
+	}
+	
+	@RequestMapping("/{id}")
+	public String show(@PathVariable Integer id, Model model) {
+		System.out.println("oiosai");
+		Product product = productDAO.find(id);
+		model.addAttribute("product", product);
+		return "products/show";
 	}
 }

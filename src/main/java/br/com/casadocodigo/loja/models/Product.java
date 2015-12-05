@@ -1,5 +1,6 @@
 package br.com.casadocodigo.loja.models;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -85,5 +86,15 @@ public class Product {
 
 	public void setReleaseDate(Calendar releaseDate) {
 		this.releaseDate = releaseDate;
+	}
+	
+	public BigDecimal priceFor(BookType bookType) {
+		for(Price price: prices) {
+			if(price.getBookType().equals(bookType)) {
+				return price.getValue();
+			}
+		}
+		
+		return BigDecimal.ZERO;
 	}
 }
