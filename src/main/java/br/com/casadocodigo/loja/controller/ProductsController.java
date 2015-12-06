@@ -1,7 +1,5 @@
 package br.com.casadocodigo.loja.controller;
 
-import java.util.List;
-
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 
@@ -14,7 +12,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.casadocodigo.loja.daos.ProductDAO;
@@ -69,15 +66,8 @@ public class ProductsController {
 		return "redirect:produtos";
 	}
 	
-	@RequestMapping(value = "json", method = RequestMethod.GET)
-	@ResponseBody
-	public List<Product> listJson() {
-		return productDAO.list();
-	}
-	
 	@RequestMapping("/{id}")
 	public String show(@PathVariable Integer id, Model model) {
-		System.out.println("oiosai");
 		Product product = productDAO.find(id);
 		model.addAttribute("product", product);
 		return "products/show";

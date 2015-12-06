@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.validation.constraints.Min;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
@@ -38,6 +40,7 @@ public class Product {
 	private Calendar releaseDate;
 	
 	@ElementCollection
+	@Fetch(FetchMode.JOIN)
 	private List<Price> prices = new ArrayList<>();
 	
 	public Integer getId() {
