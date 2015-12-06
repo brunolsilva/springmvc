@@ -111,7 +111,7 @@ public class ProductsController {
 	
 	private void sendMail(User user) {
 		SimpleMailMessage mail = new SimpleMailMessage();
-		mail.setFrom("bruno.silvagj@gmail.com");
+		mail.setFrom("");
 		mail.setTo(user.getUsername());
 		mail.setSubject("Batata");
 		mail.setText("Olar");
