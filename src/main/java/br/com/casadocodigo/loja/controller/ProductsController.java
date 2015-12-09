@@ -100,11 +100,13 @@ public class ProductsController {
 		String uriPost = "http://book-payment.herokuapp.com/payment";
 		String uriGet = "http://gturnquist-quoters.cfapps.io/api/random";
 		
-		String postResponse = restTemplate.postForObject(uriPost, new PaymentData(new BigDecimal(20)), String.class);
-		System.out.println(postResponse);
+//		String postResponse = restTemplate.postForObject(uriPost, new PaymentData(new BigDecimal(20)), String.class);
+//		System.out.println(postResponse);
 		
 		Quote quote = restTemplate.getForObject(uriGet, Quote.class);
 		System.out.println(quote);
+		
+		productDAO.queryWithTemplate();
 		
 		return "oi";
 	}
